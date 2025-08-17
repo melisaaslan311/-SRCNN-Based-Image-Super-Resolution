@@ -12,17 +12,12 @@ A comprehensive comparison study of Super-Resolution Convolutional Neural Networ
 ## 📋 Table of Contents
 
 - [Project Overview](#-project-overview)
-- [Model Comparison](#-model-comparison)
 - [Methodology](#-methodology)
 - [Dataset](#-dataset)
 - [Results](#-results)
 - [Installation](#-installation)
-- [Usage](#-usage)
 - [Project Structure](#-project-structure)
 - [Discussion](#-discussion)
-- [Future Work](#-future-work)
-- [Contributing](#-contributing)
-- [License](#-license)
 
 ## 🎯 Project Overview
 
@@ -33,17 +28,6 @@ This project aims to evaluate the performance of three different SRCNN (Super-Re
 - ⚖️ Evaluate TensorFlow vs PyTorch implementation differences
 - 📊 Analyze reconstruction quality using PSNR metrics
 - 🧪 Provide insights for optimal super-resolution model selection
-
-## 🏗️ Model Comparison
-
-| Model | Framework | Input Type | Architecture | PSNR (dB) |
-|-------|-----------|------------|--------------|-----------|
-| **Model-1** | TensorFlow | RGB Channel | 3-layer SRCNN | **30.37** |
-| **Model-1** | TensorFlow | Y Channel | 3-layer SRCNN | 27.99 |
-| **Model-2** | PyTorch | Y Channel | 3-layer SRCNN | 24.48 |
-
-### 🏆 Best Performance
-**TensorFlow-based Model-1 with RGB input** achieved the highest PSNR value (30.37 dB), demonstrating superior reconstruction quality.
 
 ## 🔬 Methodology
 
@@ -90,6 +74,10 @@ The dataset consists of:
 | **Avg PSNR (dB)** | **30.37** | 27.99 | 24.48 |
 | **Framework** | TensorFlow | TensorFlow | PyTorch |
 | **Input Type** | RGB | Y-channel | Y-channel |
+
+<img src="https://github.com/user-attachments/assets/3b98e3a0-94f3-4159-9ece-013d6737ee35" width="330" />
+<img src="https://github.com/user-attachments/assets/c820254f-ce5a-4b27-a5f0-3ccaab77c6c6" width="330" />
+<img src="https://github.com/user-attachments/assets/09054eb7-bab6-4fb6-a37b-47cf2ea9c0bc" width="330" />
 
 ### Key Findings
 
@@ -142,70 +130,40 @@ scikit-image>=0.19.0
 pillow>=8.3.0
 ```
 
-## 💻 Usage
-
-### Training Models
-```bash
-# Train TensorFlow RGB model
-python train_tensorflow_rgb.py
-
-# Train TensorFlow Y-channel model
-python train_tensorflow_y.py
-
-# Train PyTorch Y-channel model
-python train_pytorch_y.py
-```
-
-### Evaluation
-```bash
-# Evaluate all models
-python evaluate_models.py
-
-# Generate comparison plots
-python plot_results.py
-```
-
-### Single Image Super-Resolution
-```python
-from models.srcnn_tensorflow import SRCNN_TF
-from utils.image_utils import load_image, save_image
-
-# Load model
-model = SRCNN_TF()
-model.load_weights('checkpoints/srcnn_rgb_best.h5')
-
-# Process image
-lr_image = load_image('input/low_res.jpg')
-sr_image = model.predict(lr_image)
-save_image(sr_image, 'output/super_res.jpg')
-```
-
 ## 📂 Project Structure
 
 ```
-srcnn-comparison/
-├── 📁 data/
-│   ├── 📁 train/
-│   │   ├── 📁 HR/          # High-resolution images
-│   │   └── 📁 LR/          # Low-resolution images
-│   └── 📁 test/
-├── 📁 models/
-│   ├── 📄 srcnn_tensorflow.py
-│   ├── 📄 srcnn_pytorch.py
-│   └── 📄 __init__.py
-├── 📁 utils/
-│   ├── 📄 image_utils.py
-│   ├── 📄 metrics.py
-│   └── 📄 data_loader.py
-├── 📁 checkpoints/         # Trained model weights
-├── 📁 results/            # Output images and plots
-├── 📁 notebooks/          # Jupyter analysis notebooks
-├── 📄 train_tensorflow_rgb.py
-├── 📄 train_tensorflow_y.py
-├── 📄 train_pytorch_y.py
-├── 📄 evaluate_models.py
-├── 📄 requirements.txt
-└── 📄 README.md
+SRCNN-master/
+├── model_original.py
+├── run.ipynb       #.py dosyaları yerine .ipynb dosyaları çalıştırılacak 
+├── run.py
+├── .ipynb_checkpoints/
+├── data.ipynb
+├── data_original.py
+├── main.py
+├── main.py.ipynb
+├── .DS_Store
+
+Super-Resolution-master/
+├── SRCNN.ipynb
+├── SRCNN.py
+├── SRCNN_Train_OS.ipynb
+├── SRCNN_Train_OS.py
+├── trained_SRCNN_model.keras
+├── trained_SRCNN_model_y.weights.h5
+├── y_channel.ipynb
+├── Predictions/
+├── Predictions_Y/
+├── __pycache__/
+├── .ipynb_checkpoints/
+├── .DS_Store
+├── .gitignore
+
+Dataset/
+├── Test
+├── Train       #dosyalara ulaşmak için iletişime geçebilirsiniz 
+├── Val
+
 ```
 
 ## 🤔 Discussion
